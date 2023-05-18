@@ -4,34 +4,29 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Clona o repositório Git que contém o código-fonte do programa
-               // git clone 'https://github.com/isidro1993/calculadora.git'
-                git branch: 'main', credentialsId: 'SHA256:1cpLO7QZlHES1bhiEhIowflHMWyq1zX/BeLCMhIJhgc', url: 'https://github.com/isidro1993/calculadoragit'
-
+                git clone 'https://github.com/isidro1993/calculadora.git'
             }
         }
         
         stage('Compile') {
             steps {
-                // Compila o programa Java
-                sh 'Calculadora.java' // Substitua "MeuPrograma.java" pelo nome correto do seu arquivo Java
+                sh 'javac Calculadora.java'
             }
         }
         
         stage('Test') {
             steps {
-                // Executa testes automatizados no programa
-                sh 'java -cp .:junit.jar:hamcrest.jar org.junit.runner.JUnitCore CalculadoraTest'
-
-               //  sh 'java CalculadoraTest' Substitua "MeuProgramaTest" pelo nome correto da classe de teste do seu programa
+                sh 'curl -O https://repo1.maven.org/maven2/junit/junit/4.12/junit-4.12.jar'
+                sh 'curl -O https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar'
+                sh 'java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore CalculadoraTest'
             }
         }
         
         stage('Run') {
             steps {
-                // Executa o programa Java
-                sh 'java Calculadora' // Substitua "MeuPrograma" pelo nome correto da classe principal do seu programa
+                sh 'java -cp . Calculadora'
             }
         }
     }
 }
+
