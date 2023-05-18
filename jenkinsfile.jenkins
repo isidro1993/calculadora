@@ -5,7 +5,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clona o repositório Git que contém o código-fonte do programa
-                git clone 'https://github.com/isidro1993/calculadora.git'
+               // git clone 'https://github.com/isidro1993/calculadora.git'
+                git branch: 'main', credentialsId: 'SHA256:1cpLO7QZlHES1bhiEhIowflHMWyq1zX/BeLCMhIJhgc', url: 'https://github.com/isidro1993/calculadoragit'
+
             }
         }
         
