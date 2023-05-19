@@ -13,10 +13,14 @@ public class Calculadora {
 
       public static void main(String[] args) {
          Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o primeiro número: ");
-        int num1 = scanner.nextInt();
-        System.out.println("Digite o segundo número: ");
-        int num2 = scanner.nextInt();
+      //  System.out.println("Digite o primeiro número: ");
+      //  int num1 = scanner.nextInt();
+                int num1 = 5;
+
+      //  System.out.println("Digite o segundo número: ");
+        //int num2 = scanner.nextInt();
+                int num2 = 6;
+
         int resultado = soma(num1, num2);
         System.out.println("A soma de " + num1 + " e " + num2 + " é: " + resultado);
     }
